@@ -1,0 +1,18 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
+
+client.login(/*token go here*/);
+
+client.on('ready', () => {
+  console.log('Bot Ready');
+});
+
+client.on('guildMemberAdd', (member) => {
+  console.log("Adding member " + member.user.username);
+  try {
+    member.guild.channels.get(/*channel ID here*/).send(`.userinfo ${member.user.username}`);
+  }
+  catch (e){
+    console.log(e);
+  }
+});
